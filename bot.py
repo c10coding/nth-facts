@@ -29,6 +29,10 @@ async def on_ready():
 async def fact(ctx, fact_name='none', *fact_args):
     if fact_name == 'none':
         await ctx.send(f'No fact name was given! Use {COMMAND_PREFIX}fact list to see the list of facts!')
+    elif fact_name == 'list':
+        await ctx.send('List of facts:')
+        for key in FACTS:
+            await ctx.send(key)
     elif fact_name.lower() not in FACTS.keys():
         await ctx.send(f'This is not a valid fact name! Use {COMMAND_PREFIX}fact list to see the list of facts!')
     else:
